@@ -9,15 +9,13 @@ using UnityEngine.SceneManagement;
 // 11/1/23
 // Main Player Controller Script
 
-public class PlayerController : MonoBehaviour
+public class PlayerTESTscript : MonoBehaviour
 {
     // variables for movement
     private Vector3 startPosition;
-    public float jumpForce = 5f;
-    public float jumpCount = 0f;
     private Rigidbody rigidBodyRef;
     public bool firstHit = true;
-    public float speed = 10f;
+    public float walkSpeed = 10f;
     public float deathY = -10f;
 
     // variables for health
@@ -26,12 +24,6 @@ public class PlayerController : MonoBehaviour
     public float healthPack = 15f;
     public float extraHealth = 100f;
     public bool hasExtraHealth = false;
-
-    // variables for bullets
-    public bool regularBullets = true;
-    public bool heavyBullets = false;
-    public GameObject bullet;
-    public GameObject heavyBullet;
 
     // Start is called before the first frame update
     void Start()
@@ -46,19 +38,19 @@ public class PlayerController : MonoBehaviour
         //side to side movement
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            transform.position += Vector3.left * walkSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.position += Vector3.right * walkSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += Vector3.forward * speed * Time.deltaTime;
+            transform.position += Vector3.forward * walkSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += Vector3.back * speed * Time.deltaTime;
+            transform.position += Vector3.back * walkSpeed * Time.deltaTime;
         }
 
 
