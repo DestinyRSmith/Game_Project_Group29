@@ -6,7 +6,7 @@ using UnityEngine;
 /// 11/22/23
 /// Handles Player movement & Controls lives and damage/losing lives. 
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController1 : MonoBehaviour
 {
     public float speed = 10f;
     public int greenKeysCollected = 0;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             transform.position += Vector3.forward * speed * Time.deltaTime;
         }
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
-        }*/
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
