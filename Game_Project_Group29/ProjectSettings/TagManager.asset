@@ -8,6 +8,11 @@ TagManager:
   - GreenDoor
   - Door1
   - Door2
+  - Bomb
+  - Enemy1
+  - Enemy2
+  - Cherries
+  - Coffee
   layers:
   - Default
   - TransparentFX

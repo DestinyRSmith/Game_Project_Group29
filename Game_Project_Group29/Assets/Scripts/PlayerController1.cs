@@ -10,6 +10,7 @@ public class PlayerController1 : MonoBehaviour
 {
     public float speed = 10f;
     public int greenKeysCollected = 0;
+    public float lives = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +67,21 @@ public class PlayerController1 : MonoBehaviour
             {
                 Debug.Log("Not enough keys! Go find more!");
             }
+        }
+    }
+
+    public void LooseALife()
+    {
+        lives--;
+        Debug.Log("You have " + lives + " lives left.");
+    }
+
+    public void Death()
+    {
+        if (lives <= 0)
+        {
+            //Load game over scene
+            Debug.Log("You have died.");
         }
     }
 }
