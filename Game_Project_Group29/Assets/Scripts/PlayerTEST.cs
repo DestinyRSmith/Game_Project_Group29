@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerTEST : MonoBehaviour
 {
     public float lives = 3f;
+    public float score = 0f;
 
     void Start()
     {
@@ -27,6 +28,22 @@ public class PlayerTEST : MonoBehaviour
             LooseALife();
             other.gameObject.SetActive(false);
             Debug.Log("A BOMB has exloded and took a life.");
+        }
+
+        Debug.Log("Collided with a trigger");
+        if (other.gameObject.tag == "Point1")
+        {
+            score++;
+            other.gameObject.SetActive(false);
+            Debug.Log("Score: " + score);
+        }
+
+        Debug.Log("Collided with a trigger");
+        if (other.gameObject.tag == "Point5")
+        {
+            score += 5f;
+            other.gameObject.SetActive(false);
+            Debug.Log("Score: " + score);
         }
     }
 

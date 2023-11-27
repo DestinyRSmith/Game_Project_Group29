@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 20668785749879880}
   - component: {fileID: 124878973723374472}
   - component: {fileID: 81173113760273446}
-  - component: {fileID: 114209944385803620}
+  - component: {fileID: 8419481613738589684}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -102,7 +102,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495116337034960}
   m_Enabled: 1
---- !u!114 &114209944385803620
+--- !u!114 &8419481613738589684
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1495116337034960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa1bc9d0f18e31b4f95d986e72ba3295, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d5d2152d9c2360499a080efc8baa5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 5
@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 23472012978526086}
   - component: {fileID: 114748568770751014}
   - component: {fileID: 54765787227780542}
+  - component: {fileID: -8786876180572830375}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -146,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 1563296582415156}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 29.153627, y: 1, z: -3.1399803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -204,7 +205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4547a2285624d8c47a25b0769660d982, type: 2}
+  - {fileID: 2100000, guid: 4df84ca9665f9b64c862caf954866c28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -265,3 +266,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &-8786876180572830375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563296582415156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab118ed155b7574bb841afa49c105bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  greenKeysCollected: 0
+  lives: 3

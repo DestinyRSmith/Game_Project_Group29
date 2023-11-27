@@ -13,6 +13,8 @@ TagManager:
   - Enemy2
   - Cherries
   - Coffee
+  - Point1
+  - Point5
   layers:
   - Default
   - TransparentFX
