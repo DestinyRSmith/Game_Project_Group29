@@ -6,10 +6,17 @@ using UnityEngine;
 /// 11/22/23
 /// Handles Player movement & Controls lives and damage/losing lives. 
 /// </summary>
+/// Notes:/// <summary>
+/// public Animation nameAnimation;
+/// 
+/// if (key input)
+/// nameAnimation.Play("tag");
+/// </summary>
+
 public class PlayerController1 : MonoBehaviour
 {
     public float speed = 10f;
-    public int greenKeysCollected = 0;
+    public int keysCollected = 0;
     public float lives = 3f;
 
     // Start is called before the first frame update
@@ -21,47 +28,37 @@ public class PlayerController1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.forward * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.back * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collided with a trigger");
-        if (other.gameObject.tag == "GreenKey")
+        if (other.gameObject.tag == "Key")
         {
-            Debug.Log("Collided with a Green Key");
-            greenKeysCollected++;
+            Debug.Log("Collided with a Key");
+            keysCollected++;
             other.gameObject.SetActive(false);
+        }
+        if (other.gameObject.tag == "Coffee")
+        {
+            //Speed power up 
+            Debug.Log("Collided with Powerup");
+            // inumerator speed = 15f;
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "GreenDoor")
+        if (collision.gameObject.tag == "Door1")
         {
             Doors collidedDoors = collision.gameObject.GetComponent<Doors>();
             //Is the object we collided with tagged with the tag GreenDoor
-            Debug.Log("Collided with Green Door");
+            Debug.Log("Collided with a Door1");
             //checked to see if we have greater than OR equal to the amount of keys needed to open the door
-            if (greenKeysCollected >= collision.gameObject.GetComponent<Doors>().greenKeysNeeded)
+            if (keysCollected >= collision.gameObject.GetComponent<Doors>().keysNeeded)
             {
                 //Disables door
                 collision.gameObject.SetActive(false);
                 //reduces the amount of keys we have by the amount used
-                greenKeysCollected -= collision.gameObject.GetComponent<Doors>().greenKeysNeeded;
+                keysCollected -= collision.gameObject.GetComponent<Doors>().keysNeeded;
             }
             else
             {
@@ -84,4 +81,5 @@ public class PlayerController1 : MonoBehaviour
             Debug.Log("You have died.");
         }
     }
+
 }

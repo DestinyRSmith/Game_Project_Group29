@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Doors : MonoBehaviour
 {
-    public int keysRequired = 0;
-    //this int is temporarily green to figure stuff out
-    public int greenKeysNeeded;
+    public int keysNeeded;
     public int number_of_locks;
 }
