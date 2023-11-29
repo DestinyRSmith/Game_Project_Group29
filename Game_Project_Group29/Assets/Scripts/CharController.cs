@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
+// Not our code, stole from Maze Project
+// NOT OUR SCRIPT
 
 /*
  * 
