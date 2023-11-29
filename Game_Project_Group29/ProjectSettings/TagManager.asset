@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GreenKey
-  - GreenDoor
   - Door1
   - Door2
   - Bomb
@@ -15,6 +13,7 @@ TagManager:
   - Coffee
   - Point1
   - Point5
+  - Key
   layers:
   - Default
   - TransparentFX
