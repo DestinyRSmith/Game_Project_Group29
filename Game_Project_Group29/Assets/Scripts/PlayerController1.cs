@@ -15,7 +15,8 @@ using UnityEngine;
 
 public class PlayerController1 : MonoBehaviour
 {
-    public float speed = 10f;
+    public float regularSpeed = 10f;
+    public float fasterSpeed = 15f;
     public int keysCollected = 0;
     public float lives = 3f;
 
@@ -42,7 +43,7 @@ public class PlayerController1 : MonoBehaviour
         {
             //Speed power up 
             Debug.Log("Collided with Powerup");
-            // inumerator speed = 15f;
+            StartCoroutine(SpeedPowerUP());
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -81,5 +82,10 @@ public class PlayerController1 : MonoBehaviour
             Debug.Log("You have died.");
         }
     }
-
+    public IEnumerator SpeedPowerUP()
+    {
+        regularSpeed = fasterSpeed;
+        yield return new WaitForSeconds(15);
+        regularSpeed = 10f;
+    }
 }
