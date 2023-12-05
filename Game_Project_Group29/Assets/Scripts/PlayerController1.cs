@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 /// <summary>
 /// Megan Mix
 /// 11/22/23
@@ -19,6 +20,9 @@ public class PlayerController1 : MonoBehaviour
     public float fasterSpeed = 15f;
     public int keysCollected = 0;
     public float lives = 3f;
+    public float score = 0f;
+    public bool ableToKill;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +48,47 @@ public class PlayerController1 : MonoBehaviour
             //Speed power up 
             Debug.Log("Collided with Powerup");
             StartCoroutine(SpeedPowerUP());
+        }
+
+        if (other.gameObject.tag == "Bomb")
+        {
+            LooseALife();
+            other.gameObject.SetActive(false);
+            Debug.Log("A BOMB has exloded and took a life.");
+        }
+
+        if (other.gameObject.tag == "Point1")
+        {
+            score++;
+            other.gameObject.SetActive(false);
+            Debug.Log("Score: " + score);
+        }
+
+        Debug.Log("Collided with a trigger");
+        if (other.gameObject.tag == "Point5")
+        {
+            score += 5f;
+            other.gameObject.SetActive(false);
+            Debug.Log("Score: " + score);
+        }
+
+        Debug.Log("Collided with a trigger");
+        if (other.gameObject.tag == "Cherries")
+        {
+            StartCoroutine(KillPowerUP());
+            other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "Enemy2")
+        {
+            if (ableToKill == true)
+            {
+                other.gameObject.SetActive(false);
+            }
+            else
+            {
+                LooseALife();
+            }
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -87,5 +132,16 @@ public class PlayerController1 : MonoBehaviour
         regularSpeed = fasterSpeed;
         yield return new WaitForSeconds(15);
         regularSpeed = 10f;
+    }
+
+    public IEnumerator KillPowerUP()
+    {
+        // able to kill
+        ableToKill = true;
+        Debug.Log("You are able to kill enemies.");
+        yield return new WaitForSeconds(15);
+        // not able to kill
+        Debug.Log("You are NOT able to kill enemies.");
+        ableToKill = false;
     }
 }
