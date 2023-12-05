@@ -15,6 +15,7 @@ TagManager:
   - Point5
   - Key
   - Heart
+  - TrapDoor
   layers:
   - Default
   - TransparentFX

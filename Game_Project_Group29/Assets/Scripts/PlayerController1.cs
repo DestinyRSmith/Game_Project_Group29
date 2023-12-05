@@ -22,12 +22,13 @@ public class PlayerController1 : MonoBehaviour
     public float lives = 3f;
     public float score = 0f;
     public bool ableToKill;
+    private Vector3 startPos;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -39,15 +40,21 @@ public class PlayerController1 : MonoBehaviour
     {
         if (other.gameObject.tag == "Key")
         {
-            Debug.Log("Collided with a Key");
+            //Debug.Log("Collided with a Key");
             keysCollected++;
             other.gameObject.SetActive(false);
         }
         if (other.gameObject.tag == "Coffee")
         {
             //Speed power up 
-            Debug.Log("Collided with Powerup");
+            //Debug.Log("Collided with Powerup");
             StartCoroutine(SpeedPowerUP());
+        }
+        if (other.gameObject.tag == "TrapDoor")
+        {
+            Debug.Log("Collided with Trap Door");
+            LooseALife();
+            Respawn();
         }
 
         if (other.gameObject.tag == "Bomb")
@@ -64,7 +71,7 @@ public class PlayerController1 : MonoBehaviour
             Debug.Log("Score: " + score);
         }
 
-        Debug.Log("Collided with a trigger");
+        //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Point5")
         {
             score += 5f;
@@ -72,14 +79,14 @@ public class PlayerController1 : MonoBehaviour
             Debug.Log("Score: " + score);
         }
 
-        Debug.Log("Collided with a trigger");
+        //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Cherries")
         {
             StartCoroutine(KillPowerUP());
             other.gameObject.SetActive(false);
         }
 
-        Debug.Log("Collided with a trigger");
+        //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Heart")
         {
             lives++;
@@ -119,7 +126,10 @@ public class PlayerController1 : MonoBehaviour
             }
         }
     }
-
+    public void Respawn()
+    {
+        transform.position = startPos;
+    }
     public void LooseALife()
     {
         lives--;
