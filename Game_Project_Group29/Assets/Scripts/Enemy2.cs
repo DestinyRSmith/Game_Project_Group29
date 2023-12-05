@@ -61,7 +61,7 @@ public class Enemy2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Person" && GetComponent<PlayerController1>().ableToKill == true)
+        if (other.gameObject.tag == "Player" && GetComponent<PlayerController1>().ableToKill == true)
         {
             enemyAlive = false;
         }

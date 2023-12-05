@@ -79,6 +79,13 @@ public class PlayerController1 : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
+        Debug.Log("Collided with a trigger");
+        if (other.gameObject.tag == "Heart")
+        {
+            lives++;
+            other.gameObject.SetActive(false);
+        }
+
         if (other.gameObject.tag == "Enemy2")
         {
             if (ableToKill == true)
