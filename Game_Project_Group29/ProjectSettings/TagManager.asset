@@ -16,6 +16,7 @@ TagManager:
   - Key
   - Heart
   - TrapDoor
+  - Weapon
   layers:
   - Default
   - TransparentFX

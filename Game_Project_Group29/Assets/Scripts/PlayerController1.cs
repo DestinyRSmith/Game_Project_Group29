@@ -8,8 +8,6 @@ using UnityEngine.SocialPlatforms.Impl;
 /// Handles Player movement & Controls lives and damage/losing lives. 
 /// </summary>
 /// Notes:/// <summary>
-/// public Animation nameAnimation;
-/// 
 /// if (key input)
 /// nameAnimation.Play("tag");
 /// </summary>
@@ -23,6 +21,8 @@ public class PlayerController1 : MonoBehaviour
     public float score = 0f;
     public bool ableToKill;
     private Vector3 startPos;
+    public bool facingRight;
+    public bool facingLeft;
 
 
     // Start is called before the first frame update
