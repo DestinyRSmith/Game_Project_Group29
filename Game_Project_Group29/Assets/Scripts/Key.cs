@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
+    public GameObject enemy;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        transform.position = enemy.GetComponent<Enemy2>().transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<Enemy2>().enemyAlive == true)
+        if (enemy.GetComponent<Enemy2>().enemyAlive == true)
         {
-            this.gameObject.SetActive(false);
-            transform.position = GetComponent<Enemy2>().transform.position;
-        }
-        else
-        {
-            this.gameObject.SetActive(true);
+            transform.position = enemy.GetComponent<Enemy2>().transform.position;
         }
     }
 }
