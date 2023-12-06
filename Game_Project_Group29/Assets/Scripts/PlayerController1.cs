@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 /// <summary>
 /// Megan Mix
@@ -103,6 +104,18 @@ public class PlayerController1 : MonoBehaviour
             {
                 LooseALife();
             }
+        }
+
+        //Debug.Log("Collided with a trigger");
+        if (other.gameObject.tag == "Door1")
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        //Debug.Log("Collided with a trigger");
+        if (other.gameObject.tag == "Door2")
+        {
+            SceneManager.LoadScene(3);
         }
     }
     private void OnCollisionEnter(Collision collision)

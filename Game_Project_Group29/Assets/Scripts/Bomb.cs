@@ -11,7 +11,7 @@ public class Bomb : MonoBehaviour
     public float travelDistanceLeft = -4f;
     public float speed = 2f;
     private float startingX;
-    private bool moveRight = true;
+    public bool moveRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class Bomb : MonoBehaviour
                 transform.position += Vector3.right * speed * Time.deltaTime;
             }
             else
-            {
+            {        
                 moveRight = false;
             }
         }
@@ -45,7 +45,7 @@ public class Bomb : MonoBehaviour
             }
             // If the object goes too far left, tell it to move right
             else
-            {
+            {           
                 moveRight = true;
             }
         }
