@@ -41,6 +41,8 @@ public class PlayerController1 : MonoBehaviour
         {
             pickaxeHitAnim.Play("PickaxeHitAnim");
         }
+
+        Death();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -55,6 +57,7 @@ public class PlayerController1 : MonoBehaviour
             //Speed power up 
             //Debug.Log("Collided with Powerup");
             StartCoroutine(SpeedPowerUP());
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.tag == "TrapDoor")
         {
@@ -112,12 +115,6 @@ public class PlayerController1 : MonoBehaviour
         }
 
         //Debug.Log("Collided with a trigger");
-        if (other.gameObject.tag == "Door1")
-        {
-            SceneManager.LoadScene(2);
-        }
-
-        //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Door2")
         {
             SceneManager.LoadScene(3);
@@ -137,6 +134,27 @@ public class PlayerController1 : MonoBehaviour
                 collision.gameObject.SetActive(false);
                 //reduces the amount of keys we have by the amount used
                 keysCollected -= collision.gameObject.GetComponent<Doors>().keysNeeded;
+                SceneManager.LoadScene(2);
+            }
+            else
+            {
+                Debug.Log("Not enough keys! Go find more!");
+            }
+        }
+
+        if (collision.gameObject.tag == "Door2")
+        {
+            Doors collidedDoors = collision.gameObject.GetComponent<Doors>();
+            //Is the object we collided with tagged with the tag GreenDoor
+            Debug.Log("Collided with a Door2");
+            //checked to see if we have greater than OR equal to the amount of keys needed to open the door
+            if (keysCollected >= collision.gameObject.GetComponent<Doors>().keysNeeded)
+            {
+                //Disables door
+                collision.gameObject.SetActive(false);
+                //reduces the amount of keys we have by the amount used
+                keysCollected -= collision.gameObject.GetComponent<Doors>().keysNeeded;
+                SceneManager.LoadScene(3);
             }
             else
             {
@@ -158,8 +176,8 @@ public class PlayerController1 : MonoBehaviour
     {
         if (lives <= 0)
         {
-            //Load game over scene
             Debug.Log("You have died.");
+            SceneManager.LoadScene(4);
         }
     }
     public IEnumerator SpeedPowerUP()
