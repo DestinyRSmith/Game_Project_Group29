@@ -26,6 +26,7 @@ public class PlayerController1 : MonoBehaviour
     public bool facingRight;
     public bool facingLeft;
     public Animation pickaxeHitAnim;
+    public GameObject Door;
 
 
     // Start is called before the first frame update
@@ -133,11 +134,44 @@ public class PlayerController1 : MonoBehaviour
                 LooseALife();
             }
         }
-
+        if (other.gameObject.tag == "Door1")
+        {
+            Doors otherDoors = Door.GetComponent<Doors>();
+            //Is the object we collided with tagged with the tag GreenDoor
+            Debug.Log("Collided with a Door1");
+            //checked to see if we have greater than OR equal to the amount of keys needed to open the door
+            if (keysCollected >= Door.GetComponent<Doors>().keysNeeded)
+            {
+                //Disables door
+                other.gameObject.SetActive(false);
+                //reduces the amount of keys we have by the amount used
+                keysCollected -= Door.GetComponent<Doors>().keysNeeded;
+                SceneManager.LoadScene(2);
+            }
+            else
+            {
+                Debug.Log("Not enough keys! Go find more!");
+            }
+        }
         //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Door2")
         {
-            SceneManager.LoadScene(3);
+            Doors otherDoors = Door.GetComponent<Doors>();
+            //Is the object we collided with tagged with the tag GreenDoor
+            Debug.Log("Collided with a Door2");
+            //checked to see if we have greater than OR equal to the amount of keys needed to open the door
+            if (keysCollected >= Door.GetComponent<Doors>().keysNeeded)
+            {
+                //Disables door
+                other.gameObject.SetActive(false);
+                //reduces the amount of keys we have by the amount used
+                keysCollected -= Door.GetComponent<Doors>().keysNeeded;
+                SceneManager.LoadScene(3);
+            }
+            else
+            {
+                Debug.Log("Not enough keys! Go find more!");
+            }
         }
     }
     private void OnCollisionEnter(Collision collision)
