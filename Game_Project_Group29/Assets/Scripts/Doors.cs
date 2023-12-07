@@ -5,5 +5,5 @@ using UnityEngine;
 public class Doors : MonoBehaviour
 {
     public int keysNeeded;
-    public int number_of_locks;
+    //public int number_of_locks;
 }

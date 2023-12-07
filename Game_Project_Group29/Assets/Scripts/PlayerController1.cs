@@ -113,6 +113,17 @@ public class PlayerController1 : MonoBehaviour
                 LooseALife();
             }
         }
+        if (other.gameObject.tag == "Enemy1")
+        {
+            if (ableToKill == true)
+            {
+                other.gameObject.SetActive(false);
+            }
+            else
+            {
+                LooseALife();
+            }
+        }
 
         //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Door2")
