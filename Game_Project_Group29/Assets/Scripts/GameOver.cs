@@ -11,6 +11,12 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     public PlayerController1 player;
+    
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+    
     public void RetryGame()
     {
         SceneManager.LoadScene(1);
@@ -25,4 +31,5 @@ public class GameOver : MonoBehaviour
     {
         Application.Quit();
     }
+
 }

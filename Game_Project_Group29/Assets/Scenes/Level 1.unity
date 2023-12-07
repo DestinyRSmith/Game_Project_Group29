@@ -13990,6 +13990,7 @@ GameObject:
   - component: {fileID: 1002619174}
   - component: {fileID: 1002619173}
   - component: {fileID: 1002619172}
+  - component: {fileID: 1002619175}
   m_Layer: 0
   m_Name: Door 1
   m_TagString: Door1
@@ -14083,6 +14084,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002619170}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1002619175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002619170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81e9de0a120e2e488ff7fde667adf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keysNeeded: 1
+  number_of_locks: 1
 --- !u!1 &1008712126
 GameObject:
   m_ObjectHideFlags: 0
