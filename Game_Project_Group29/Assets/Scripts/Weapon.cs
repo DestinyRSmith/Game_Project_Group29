@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     public GameObject player;
     public Vector3 weaponPos;
     public Quaternion weaponRot;
-    public Animation PickaxeHit;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -44,10 +44,6 @@ public class Weapon : MonoBehaviour
             }
 
         }
-        //when E is pressed, animation is played
-        if (Input.GetKey(KeyCode.E))
-        {
-            PickaxeHit.Play("PickaxeHitAnim");
-        }
+        
     }
 }
