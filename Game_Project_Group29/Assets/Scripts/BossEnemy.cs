@@ -9,6 +9,7 @@ public class BossEnemy : MonoBehaviour
     public bool enemyAlive = true;
     public float bossHP = 2;
     public GameObject playerCon;
+    public PlayerController1 playConScript;
 
     public GameObject[] wayPoints;
     public int nextWayPoint;
@@ -30,10 +31,18 @@ public class BossEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (playerCon.GetComponent<PlayerController1>().ableToKill == true)
+        if (other.gameObject.tag == "Player")
         {
-
+            if (playerCon.GetComponent<PlayerController1>().ableToKill == true)
+            {
+                bossHP--;
+            }
+            else
+            {
+                playConScript.GetComponent<PlayerController1>().lives -= 1;
+            }
         }
+
     }
 
     private void MoveToWayPoint()
