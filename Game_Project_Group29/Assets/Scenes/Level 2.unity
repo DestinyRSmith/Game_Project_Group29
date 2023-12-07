@@ -13754,8 +13754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81e9de0a120e2e488ff7fde667adf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keysNeeded: 3
-  number_of_locks: 3
+  keysNeeded: 1
+  number_of_locks: 1
 --- !u!1 &1017253964
 GameObject:
   m_ObjectHideFlags: 0

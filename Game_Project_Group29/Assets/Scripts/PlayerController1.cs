@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
@@ -93,6 +94,14 @@ public class PlayerController1 : MonoBehaviour
         {
             StartCoroutine(KillPowerUP());
             other.gameObject.SetActive(false);
+        }
+
+        //Debug.Log("Collided with a trigger");
+        if (other.gameObject.tag == "CherriesRespawn")
+        {
+
+            StartCoroutine(KillPowerUP());
+
         }
 
         //Debug.Log("Collided with a trigger");
@@ -207,5 +216,18 @@ public class PlayerController1 : MonoBehaviour
         // not able to kill
         Debug.Log("You are NOT able to kill enemies.");
         ableToKill = false;
+    }
+
+    public IEnumerator CherryRespawn()
+    {
+        // able to kill
+        ableToKill = true;
+        gameObject.SetActive(false);
+        Debug.Log("You are able to kill enemies.");
+        yield return new WaitForSeconds(15);
+        // not able to kill
+        Debug.Log("You are NOT able to kill enemies.");
+        ableToKill = false;
+        gameObject.SetActive(true);
     }
 }
