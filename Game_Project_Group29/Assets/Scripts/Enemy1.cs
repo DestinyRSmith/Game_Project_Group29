@@ -23,14 +23,6 @@ public class Enemy1 : MonoBehaviour
     }
     public void enemyMove()
     {
-        if(startingZ <= 2.18f)
-        {
-            moveUp();
-        }
-        else
-        {
-
-        }
         //move forward till Z = 2.18
         //move left till X = 27.32
         //move forward till Z = 4.63

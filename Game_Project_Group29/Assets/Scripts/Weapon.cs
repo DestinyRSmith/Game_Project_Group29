@@ -5,45 +5,18 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public GameObject player;
-    public Vector3 weaponPos;
-    public Quaternion weaponRot;
+    public Vector3 offset;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        offset = transform.position - player.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //follows player
-        transform.position = player.GetComponent<PlayerController1>().transform.position;
-        weaponPos = transform.position;
-        transform.rotation = weaponRot;
-
-        // when player faces right, pickaxe is one unit to the right
-        if (player.GetComponent<PlayerController1>().facingRight == true)
-        {
-            weaponPos.x += 1f;
-            transform.position = weaponPos;
-            if (weaponRot.y != -90)
-            {
-                transform.Rotate(Vector3.up * -90);
-            }
-        }
-        // when player faces left, pickaxe is one unit to the left and rotates 90 degrees
-        if (player.GetComponent<PlayerController1>().facingLeft == true)
-        {
-            weaponPos.x -= 1f;
-            transform.position = weaponPos;
-            if (weaponRot.y != 90)
-            {
-                transform.Rotate(Vector3.up * 90);
-            }
-
-        }
-        
+        transform.position = player.transform.position + offset;
     }
 }

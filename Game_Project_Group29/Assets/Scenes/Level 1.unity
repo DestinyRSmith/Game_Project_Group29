@@ -3000,6 +3000,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1268793793}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!1 &197873210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1563296582415156, guid: 5fbb457081789a4439eb3c350005947e, type: 3}
+  m_PrefabInstance: {fileID: 362064010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &205747740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4715,6 +4720,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5368240520806964057, guid: c19899cb4575fb745b77fec94483ca7d, type: 3}
   m_PrefabInstance: {fileID: 302748690}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &313690291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4936523385187070575, guid: 1cf030c3b6a976246b704f2b92b2de25, type: 3}
+  m_PrefabInstance: {fileID: 3943154533823749252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &314848385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5106,6 +5116,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8786876180572830375, guid: 5fbb457081789a4439eb3c350005947e, type: 3}
       propertyPath: PickaxeHit
+      value: 
+      objectReference: {fileID: 826677832009386549}
+    - target: {fileID: -8786876180572830375, guid: 5fbb457081789a4439eb3c350005947e, type: 3}
+      propertyPath: PickaxeHitAnim
+      value: 
+      objectReference: {fileID: 826677832009386549}
+    - target: {fileID: -8786876180572830375, guid: 5fbb457081789a4439eb3c350005947e, type: 3}
+      propertyPath: pickaxeHitAnim
       value: 
       objectReference: {fileID: 826677832009386549}
     - target: {fileID: 1563296582415156, guid: 5fbb457081789a4439eb3c350005947e, type: 3}
@@ -7042,7 +7060,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -8786876180572830375, guid: 5fbb457081789a4439eb3c350005947e, type: 3}
   m_PrefabInstance: {fileID: 362064010}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 197873210}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ab118ed155b7574bb841afa49c105bd, type: 3}
@@ -27469,6 +27487,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5749369879766214869, guid: 1cf030c3b6a976246b704f2b92b2de25, type: 3}
   m_PrefabInstance: {fileID: 3943154533823749252}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2130095797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313690291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fceddc7288185d54c966b02a0c3f6951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAlive: 1
+  firstStopZ: 1
+  secondStopZ: 1
+  thirdStopZ: 1
+  fourthStopZ: 1
+  fifthStopZ: 1
+  sixthStopZ: 1
+  firstStopX: 1
+  secondStopX: 1
+  thirdStopX: 1
+  fourthStopX: 1
+  fifthStopX: 1
+  sixthStopX: 1
+  speed: 2
+  movingX: 0
+  movingZ: 0
 --- !u!1001 &2133453426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27716,7 +27762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6858032353352739912, guid: 1e4420d9aa8c36d4a8ea15753ad45291, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.23
+      value: 29.741
       objectReference: {fileID: 0}
     - target: {fileID: 6858032353352739912, guid: 1e4420d9aa8c36d4a8ea15753ad45291, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27724,7 +27770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6858032353352739912, guid: 1e4420d9aa8c36d4a8ea15753ad45291, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.684
+      value: -2.212
       objectReference: {fileID: 0}
     - target: {fileID: 6858032353352739912, guid: 1e4420d9aa8c36d4a8ea15753ad45291, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27798,10 +27844,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3657cb645f7b24f4aa56407a03f5e43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1563296582415156, guid: 5fbb457081789a4439eb3c350005947e, type: 3}
-  weaponPos: {x: 0, y: 0, z: 0}
-  weaponRot: {x: 0, y: 0, z: 0, w: 0}
-  PickaxeHit: {fileID: 826677832009386549}
+  player: {fileID: 197873210}
+  offset: {x: 2, y: 0, z: 2}
 --- !u!1001 &1757752986397637871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27971,7 +28015,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4936523385187070575, guid: 1cf030c3b6a976246b704f2b92b2de25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2130095797}
   m_SourcePrefab: {fileID: 100100000, guid: 1cf030c3b6a976246b704f2b92b2de25, type: 3}
 --- !u!1001 &4414989540496817293
 PrefabInstance:

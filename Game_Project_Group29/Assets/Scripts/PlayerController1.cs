@@ -24,7 +24,7 @@ public class PlayerController1 : MonoBehaviour
     private Vector3 startPos;
     public bool facingRight;
     public bool facingLeft;
-    public Animation PickaxeHitAnim;
+    public Animation pickaxeHitAnim;
 
 
     // Start is called before the first frame update
@@ -39,7 +39,7 @@ public class PlayerController1 : MonoBehaviour
         //when E is pressed, animation is played
         if (Input.GetKey(KeyCode.E))
         {
-            PickaxeHitAnim.Play("PickaxeHitAnim");
+            pickaxeHitAnim.Play("PickaxeHitAnim");
         }
     }
     private void OnTriggerEnter(Collider other)
