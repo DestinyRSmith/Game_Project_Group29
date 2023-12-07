@@ -14920,9 +14920,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e945661f70ce214db9a9f2b8508ccce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAlive: 1
+  wayPoints: []
+  nextWayPoint: 0
   speed: 3
-  startingX: 28.81
-  startingZ: 0.26
 --- !u!4 &1099916941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8245713718740280432, guid: cc07bccec948aef4a9fa152be3fa85c5, type: 3}
@@ -21937,6 +21938,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5368240520806964057, guid: c19899cb4575fb745b77fec94483ca7d, type: 3}
   m_PrefabInstance: {fileID: 1588966959}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1601004165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1394150036794045358, guid: a0de874d10366a04d8dad199f1cd8bd5, type: 3}
+  m_PrefabInstance: {fileID: 5060000825670718259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1601004169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601004165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e945661f70ce214db9a9f2b8508ccce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAlive: 1
+  wayPoints: []
+  nextWayPoint: 0
+  speed: 2
 --- !u!1001 &1609621008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29844,7 +29866,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1394150036794045358, guid: a0de874d10366a04d8dad199f1cd8bd5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1601004169}
   m_SourcePrefab: {fileID: 100100000, guid: a0de874d10366a04d8dad199f1cd8bd5, type: 3}
 --- !u!1001 &5660105209254431290
 PrefabInstance:

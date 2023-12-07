@@ -4,44 +4,41 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
-    public float speed = 3f;
-    public float startingX = 28.81f;
-    public float startingZ = 0.26f;
+    public bool enemyAlive = true;
+
+    public GameObject[] wayPoints;
+    public int nextWayPoint;
+    public float speed = 2f;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        startingX = transform.position.x;
-        startingZ = transform.position.z;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        MoveToWayPoint();
     }
-    public void enemyMove()
+    private void MoveToWayPoint()
     {
-        //move forward till Z = 2.18
-        //move left till X = 27.32
-        //move forward till Z = 4.63
-        //move left till Z = 24.76
-    }
-    public void moveUp()
-    {
-        transform.position += Vector3.forward * speed * Time.deltaTime;
-    }
-    public void moveDown()
-    {
-        transform.position += Vector3.back * speed * Time.deltaTime;
-    }
-    public void moveRight()
-    {
-        transform.position += Vector3.right * speed * Time.deltaTime;
-    }
-    public void moveLeft()
-    {
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        Vector3 targetPosition = wayPoints[nextWayPoint].transform.position;
+        targetPosition.y = transform.position.y;
+        Vector3 direction = (targetPosition - transform.position);
+        if (direction.magnitude >= .1f)
+        {
+            transform.position += direction.normalized * speed * Time.deltaTime;
+        }
+        else
+        {
+            transform.position = targetPosition;
+            nextWayPoint++;
+            if (nextWayPoint >= wayPoints.Length)
+            {
+                nextWayPoint = 0;
+            }
+        }
     }
 }
