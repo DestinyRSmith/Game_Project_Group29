@@ -5,19 +5,23 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     public GameObject enemy;
+    public Vector3 keyPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = enemy.GetComponent<Enemy2>().transform.position;
+        keyPos = enemy.GetComponent<Enemy2>().transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemy.GetComponent<Enemy2>().enemyAlive == true)
+        keyPos = enemy.GetComponent<Enemy2>().transform.position;
+        if (keyPos.y <= 1.3f)
         {
-            transform.position = enemy.GetComponent<Enemy2>().transform.position;
+            keyPos.y += 0.35f;
+
         }
+        transform.position = keyPos;
     }
 }

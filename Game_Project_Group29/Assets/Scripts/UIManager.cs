@@ -18,6 +18,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         totalLivesText.text = "Lives: " + playerController.lives;
-        totalLivesText.text = "Score: " + playerController.score;
+        totalScoreText.text = "Score: " + playerController.score;
     }
 }

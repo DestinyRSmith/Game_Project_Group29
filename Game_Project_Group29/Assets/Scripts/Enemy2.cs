@@ -18,22 +18,24 @@ public class Enemy2 : MonoBehaviour
 
     public bool enemyAlive = true;
 
-    public float firstStopZ = -2.5f;
-    public float secondStopZ = -12f;
-    public float thirdStopZ = -7.33f;
-    public float fourthStopZ = -4.9f;
-    public float fifthStopZ = 4f;
-    public float sixthStopZ = 5f;
+    public float firstStopZ = 0f;    
+    public float secondStopZ = 0f;
+    public float thirdStopZ = 0f;
+    public float fourthStopZ = 0f;
+    public float fifthStopZ = 0f;
+    public float sixthStopZ = 0f;
+    // seventh stop = starting Z
 
-    public float firstStopX = 22f;
-    public float secondStopX = 17.7f;
-    public float thirdStopX = 19.35f;
-    public float fourthStopX = 17.78f;
-    public float fifthStopX = 20.4f;
-    public float sixthStopX = 24.8f;
+    public float firstStopX = 0f;    
+    public float secondStopX = 0f;
+    public float thirdStopX = 0f;
+    public float fourthStopX = 0f;
+    public float fifthStopX = 0f;
+    public float sixthStopX = 0f;
+    // seventh stop = starting X
+
     public float speed = 2f;
-    //public bool goingDown = true;
-    //public bool goingUp = false;
+
     public bool movingX;
     public bool movingZ;
 
@@ -48,15 +50,34 @@ public class Enemy2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //GoingDOWN();
-
-        //GoingUP();
+        movingX = false;
         movingZ = true;
-        MoveBack(sixthStopZ);
+        MoveBack(firstStopZ);
         movingX = true;
-        MoveRight(sixthStopX);
+        MoveRight(firstStopX);
+        movingZ = true;
         MoveBack(secondStopZ);
-
+        movingX = true;
+        MoveLeft(secondStopX);
+        movingZ = true;
+        MoveBack(thirdStopZ);
+        movingX = true;
+        MoveLeft(secondStopX);
+        movingZ = true;
+        MoveForward(fourthStopZ);
+        movingX = true;
+        MoveRight(thirdStopX);
+        movingX = true;
+        MoveForward(fifthStopZ);
+        movingX = true;
+        MoveLeft(sixthStopX);
+        movingZ = true;
+        MoveForward(sixthStopZ);
+        movingX = true;
+        MoveRight(startingX);
+        movingX = true;
+        MoveForward(startingZ);
+        movingX = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,140 +87,47 @@ public class Enemy2 : MonoBehaviour
             enemyAlive = false;
         }
     }
-    /*
-    private void GoingDOWN()
-    {
-        if (goingDown)
-        {
-            //moves enemy from top position to bottom position
-            if (transform.position.z >= sixthStopZ && transform.position.x >= startingX)
-            {
-                transform.position += Vector3.back * speed * Time.deltaTime;
-            }
-
-            // moves enemy from left position to right position
-            else if (transform.position.x >= sixthStopX && transform.position.z <= sixthStopZ)
-            {
-                transform.position += Vector3.right * speed * Time.deltaTime;
-            }
-
-            //moves enemy from top position to bottom position
-            else if (transform.position.z >= secondStopZ && transform.position.x <= sixthStopX)
-            {
-                transform.position += Vector3.back * speed * Time.deltaTime;
-            }
-
-            // moves the enemy from right position to left position
-            else if (transform.position.x >= firstStopX && transform.position.z <= secondStopZ)
-            {
-                transform.position += Vector3.left * speed * Time.deltaTime;
-            }
-
-            // moves enemy from top position to bottom position
-            else if (transform.position.z >= secondStopZ && transform.position.x <= firstStopX)
-            {
-                transform.position += Vector3.back * speed * Time.deltaTime;
-            }
-
-            // moves the enemy from right position to left position
-            else if (transform.position.x >= secondStopX && transform.position.z <= secondStopZ)
-            {
-                transform.position += Vector3.left * speed * Time.deltaTime;
-            }
-
-            // changes the enemy's flow of direction so it doesn't get confused with
-            // previous actions
-            else
-            {
-                goingDown = false;
-                goingUp = true;                
-            }
-
-        }
-    }
-
-    private void GoingUP()
-    {
-        if (goingUp)
-        {
-            // moves enemy from bottom position to top position
-            if (transform.position.z <= thirdStopZ && transform.position.x <= secondStopX)
-            {
-                transform.position += Vector3.forward * speed * Time.deltaTime;
-            }
-
-            // moves enemy from left position to right position
-            // this if statement is conflicting with fourth if statement, need help
-            else if (transform.position.x <= thirdStopX && transform.position.z >= thirdStopZ)
-            {
-                transform.position += Vector3.right * speed * Time.deltaTime;
-            }
-
-            // moves enemy from bottom position to top position
-            else if (transform.position.z <= fourthStopZ && transform.position.x >= thirdStopX)
-            {
-                transform.position += Vector3.forward * speed * Time.deltaTime;
-            }
-
-            // moves the enemy from right position to left position
-            else if (transform.position.x >= fourthStopX && transform.position.z <= fourthStopZ)
-            {
-                transform.position += Vector3.left * speed * Time.deltaTime;
-            }
-
-            // moves enemy from bottom position to top position
-            else if (transform.position.z <= fifthStopZ && transform.position.x >= fourthStopX)
-            {
-                transform.position += Vector3.forward * speed * Time.deltaTime;
-            }
-
-            // moves enemy from left position to right position
-            else if (transform.position.x <= fifthStopX && transform.position.z >= fifthStopZ)
-            {
-                transform.position += Vector3.right * speed * Time.deltaTime;
-            }
-
-            // moves enemy from bottom position to top position
-            else if (transform.position.z <= startingZ && transform.position.x >= fifthStopX)
-            {
-                transform.position += Vector3.forward * speed * Time.deltaTime;
-            }
-
-            // moves enemy from left position to right position
-            else if (transform.position.x <= startingX && transform.position.z >= startingZ)
-            {
-                transform.position += Vector3.right * speed * Time.deltaTime;
-            }
-        }
-    }
-    */
 
     private void MoveBack(float stopBackZ)
     {
+        movingZ = true;
         if (transform.position.z >= stopBackZ && movingX == false)
         {
             transform.position += Vector3.back * speed * Time.deltaTime;
         }
-        movingZ = false;
+        else
+        {
+            movingZ = false;
+        }
+
     }
 
-    private void MoveForwrd(float stopForwardZ)
+    private void MoveForward(float stopForwardZ)
     {
         movingZ = true;
         if (transform.position.z >= stopForwardZ && movingX == false)
         {
             transform.position += Vector3.forward * speed * Time.deltaTime;
         }
-        movingZ = false;
+        else
+        {
+            movingZ = false;
+        }
+
     }
 
     private void MoveRight(float stopRightX)
     {
+        movingX = true;
         if (transform.position.x <= stopRightX && movingZ == false)
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
-        movingX = false;
+        else
+        {
+            movingX = false;
+        }
+
     }
 
     private void MoveLeft(float stopLeftX)
@@ -209,6 +137,10 @@ public class Enemy2 : MonoBehaviour
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
-        movingX = false;
+        else
+        {
+            movingX = false;
+        }
+
     }
 }
