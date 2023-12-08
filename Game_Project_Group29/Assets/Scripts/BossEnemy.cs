@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// Destiny Smith
+/// 12/7/23
+/// Handles Boos movements, damage for both boss and player, and loads scene when HP is at 0.
 public class BossEnemy : MonoBehaviour
 {
 
     public bool enemyAlive = true;
-    public float bossHP = 2f;
+    public float bossHP = 10f;
     public GameObject playerCon;
     public PlayerController1 playConScript;
 
@@ -27,6 +30,12 @@ public class BossEnemy : MonoBehaviour
     {
         MoveToWayPoint();
     }
+
+    /// <summary>
+    /// Causes the boss to loose 1 HP when collided with pickaxe.
+    /// Causes the player to loose 1 lives when collided with boss unless able to Kill is true.
+    /// </summary>
+    /// <param name="other"></param>
 
     private void OnTriggerEnter(Collider other)
     {
@@ -48,6 +57,10 @@ public class BossEnemy : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// Moves the Boss Enemey from last to position to the new position of the "WayPoint" gameobject
+    /// </summary>
 
     private void MoveToWayPoint()
     {
@@ -71,6 +84,11 @@ public class BossEnemy : MonoBehaviour
             StartCoroutine(WayPointDelay());
         }
     }
+
+    /// <summary>
+    /// Causes a delay of 5 seconds between each movement
+    /// </summary>
+    /// <returns></returns>
 
     public IEnumerator WayPointDelay()
     {

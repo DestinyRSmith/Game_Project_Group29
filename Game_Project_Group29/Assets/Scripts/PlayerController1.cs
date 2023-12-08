@@ -4,15 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
-/// <summary>
-/// Megan Mix
-/// 11/22/23
-/// Handles Player movement & Controls lives and damage/losing lives. 
-/// </summary>
-/// Notes:/// <summary>
-/// if (key input)
-/// nameAnimation.Play("tag");
-/// </summary>
+
+/// Megan Mix & Destiny Smith
+/// 12/7/23
+/// Controls lives and damage/losing lives, weapon and enemy mechanic, collisions, powerups, and manages
+/// when to load next scene. 
 
 public class PlayerController1 : MonoBehaviour
 {
@@ -26,7 +22,8 @@ public class PlayerController1 : MonoBehaviour
     public bool facingRight;
     public bool facingLeft;
     public Animation pickaxeHitAnim;
-    public GameObject Door;
+    public GameObject door;
+    public GameObject boss;
 
 
     // Start is called before the first frame update
@@ -45,22 +42,27 @@ public class PlayerController1 : MonoBehaviour
         }
 
         Death();
+
+        if (boss.GetComponent<BossEnemy>().bossHP <= 0f)
+        {
+            this.gameObject.SetActive(false);
+            SceneManager.LoadScene(5);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Key")
         {
-            //Debug.Log("Collided with a Key");
             keysCollected++;
             other.gameObject.SetActive(false);
         }
+
         if (other.gameObject.tag == "Coffee")
         {
-            //Speed power up 
-            //Debug.Log("Collided with Powerup");
             StartCoroutine(SpeedPowerUP());
             other.gameObject.SetActive(false);
         }
+
         if (other.gameObject.tag == "TrapDoor")
         {
             Debug.Log("Collided with Trap Door");
@@ -82,7 +84,6 @@ public class PlayerController1 : MonoBehaviour
             Debug.Log("Score: " + score);
         }
 
-        //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Point5")
         {
             score += 5f;
@@ -90,22 +91,12 @@ public class PlayerController1 : MonoBehaviour
             Debug.Log("Score: " + score);
         }
 
-        //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Cherries")
         {
             StartCoroutine(KillPowerUP());
             other.gameObject.SetActive(false);
         }
 
-        //Debug.Log("Collided with a trigger");
-        if (other.gameObject.tag == "CherriesRespawn")
-        {
-
-            StartCoroutine(KillPowerUP());
-
-        }
-
-        //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Heart")
         {
             lives++;
@@ -123,6 +114,7 @@ public class PlayerController1 : MonoBehaviour
                 LooseALife();
             }
         }
+
         if (other.gameObject.tag == "Enemy1")
         {
             if (ableToKill == true)
@@ -134,18 +126,19 @@ public class PlayerController1 : MonoBehaviour
                 LooseALife();
             }
         }
+
         if (other.gameObject.tag == "Door1")
         {
-            Doors otherDoors = Door.GetComponent<Doors>();
+            Doors otherDoors = door.GetComponent<Doors>();
             //Is the object we collided with tagged with the tag GreenDoor
             Debug.Log("Collided with a Door1");
             //checked to see if we have greater than OR equal to the amount of keys needed to open the door
-            if (keysCollected >= Door.GetComponent<Doors>().keysNeeded)
+            if (keysCollected >= door.GetComponent<Doors>().keysNeeded)
             {
                 //Disables door
                 other.gameObject.SetActive(false);
                 //reduces the amount of keys we have by the amount used
-                keysCollected -= Door.GetComponent<Doors>().keysNeeded;
+                keysCollected -= door.GetComponent<Doors>().keysNeeded;
                 SceneManager.LoadScene(2);
             }
             else
@@ -156,16 +149,16 @@ public class PlayerController1 : MonoBehaviour
         //Debug.Log("Collided with a trigger");
         if (other.gameObject.tag == "Door2")
         {
-            Doors otherDoors = Door.GetComponent<Doors>();
+            Doors otherDoors = door.GetComponent<Doors>();
             //Is the object we collided with tagged with the tag GreenDoor
             Debug.Log("Collided with a Door2");
             //checked to see if we have greater than OR equal to the amount of keys needed to open the door
-            if (keysCollected >= Door.GetComponent<Doors>().keysNeeded)
+            if (keysCollected >= door.GetComponent<Doors>().keysNeeded)
             {
                 //Disables door
                 other.gameObject.SetActive(false);
                 //reduces the amount of keys we have by the amount used
-                keysCollected -= Door.GetComponent<Doors>().keysNeeded;
+                keysCollected -= door.GetComponent<Doors>().keysNeeded;
                 SceneManager.LoadScene(3);
             }
             else
@@ -216,16 +209,27 @@ public class PlayerController1 : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Sends the player back to thier starting position.
+    /// </summary>
     public void Respawn()
     {
         transform.position = startPos;
     }
+
+    /// <summary>
+    /// Subtracts one from player "lives".
+    /// </summary>
     public void LooseALife()
     {
         lives--;
         Debug.Log("You have " + lives + " lives left.");
     }
 
+    /// <summary>
+    /// When lives is 0 or less, the game over scene is loaded.
+    /// </summary>
     public void Death()
     {
         if (lives <= 0)
@@ -234,6 +238,11 @@ public class PlayerController1 : MonoBehaviour
             SceneManager.LoadScene(4);
         }
     }
+
+    /// <summary>
+    /// Increases player speed for a specific amount of time.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator SpeedPowerUP()
     {
         regularSpeed = fasterSpeed;
@@ -241,6 +250,10 @@ public class PlayerController1 : MonoBehaviour
         regularSpeed = 10f;
     }
 
+    /// <summary>
+    /// Gives the ability to kill enemies for a certain amount of time.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator KillPowerUP()
     {
         // able to kill
@@ -250,18 +263,5 @@ public class PlayerController1 : MonoBehaviour
         // not able to kill
         Debug.Log("You are NOT able to kill enemies.");
         ableToKill = false;
-    }
-
-    public IEnumerator CherryRespawn()
-    {
-        // able to kill
-        ableToKill = true;
-        gameObject.SetActive(false);
-        Debug.Log("You are able to kill enemies.");
-        yield return new WaitForSeconds(15);
-        // not able to kill
-        Debug.Log("You are NOT able to kill enemies.");
-        ableToKill = false;
-        gameObject.SetActive(true);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 // Smith, Destiny
-// 11/6/2023
+// 12/5/2023
 // Manages the text and UI in the game
 
 public class UIManager : MonoBehaviour

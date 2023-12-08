@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// Megan Mix
+/// 12/7/23
+/// Handles mechanics for Picaxe weapon
+
 public class Weapon : MonoBehaviour
 {
     public GameObject player;

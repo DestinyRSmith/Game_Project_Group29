@@ -6,6 +6,10 @@ using UnityEngine;
 public class Enemy2 : MonoBehaviour
 {
 
+    /// Destiny Smith
+    /// 12/7/23
+    /// Handles Enemy movements.
+
     public bool enemyAlive = true;
 
     public GameObject[] wayPoints;
@@ -23,6 +27,10 @@ public class Enemy2 : MonoBehaviour
     {
         MoveToWayPoint();
     }
+
+    /// <summary>
+    /// Moves the Boss Enemey from last to position to the new position of the "WayPoint" gameobject
+    /// </summary>
 
     private void MoveToWayPoint()
     {

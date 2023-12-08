@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// Destiny Smith
+/// 12/7/23
+/// Handles key movements to follow enemy.
+
 public class Key : MonoBehaviour
 {
     public GameObject enemy;
