@@ -7,7 +7,7 @@ public class BossEnemy : MonoBehaviour
 {
 
     public bool enemyAlive = true;
-    public float bossHP = 2;
+    public float bossHP = 2f;
     public GameObject playerCon;
     public PlayerController1 playConScript;
 
@@ -26,7 +26,6 @@ public class BossEnemy : MonoBehaviour
     void Update()
     {
         MoveToWayPoint();
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,6 +40,11 @@ public class BossEnemy : MonoBehaviour
             {
                 playConScript.GetComponent<PlayerController1>().lives -= 1;
             }
+        }
+
+        if (other.gameObject.tag == "Weapon")
+        {
+            bossHP--;
         }
 
     }
