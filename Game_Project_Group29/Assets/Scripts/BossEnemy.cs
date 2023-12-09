@@ -92,7 +92,6 @@ public class BossEnemy : MonoBehaviour
 
     public IEnumerator WayPointDelay()
     {
-        Debug.Log("Waiting.");
         wait = true;
         yield return new WaitForSeconds(5);
         wait = false;
