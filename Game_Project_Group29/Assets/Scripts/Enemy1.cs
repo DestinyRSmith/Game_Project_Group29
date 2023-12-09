@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Megan Mix
+// 12/8/23
+// Controls movement for enemy 1.
+
 public class Enemy1 : MonoBehaviour
 {
     public bool enemyAlive = true;
@@ -10,13 +15,6 @@ public class Enemy1 : MonoBehaviour
     public GameObject[] wayPoints;
     public int nextWayPoint;
     public float speed = 2f;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
